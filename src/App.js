@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, Fragment } from "react";
+// import LoadingBar from "react-redux-loading-bar";
+import { Routes, Route } from "react-router-dom";
+
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      {/* <LoadingBar /> */}
+      <div className="container">
+        <NavBar />
+        <Routes>
+          <Route exact path="/" element={<div>hola</div>} />
+          <Route path="/questions/:question_id" element={<div></div>} />
+          <Route path="/add" element={<div></div>} />
+        </Routes>
+      </div>
+    </Fragment>
   );
 }
 
