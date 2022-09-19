@@ -15,12 +15,16 @@ const QuestionCard = (props) => {
   console.log(`../../public/assets/${question.avatar}`);
   return (
     <div>
-      <Card style={{ width: "14rem" }}>
+      <Card
+        style={{
+          width: "14rem",
+        }}
+      >
         <Card.Img variant="top" src={question.avatar} />
         <Card.Body>
           <Card.Title>By {question.name}</Card.Title>
           <p>{formatDate(question.timestamp)}</p>
-          <Button variant="primary">View</Button>
+          <Button variant="secondary">View</Button>
         </Card.Body>
       </Card>
     </div>

@@ -49,7 +49,9 @@ const Questions = (props) => {
 };
 
 const mapStateToProps = ({ users, questions, authedUser }, { tab }) => {
-  const answeredIDs = Object.keys(users[authedUser].answers);
+  const answeredIDs = Object.keys(users[authedUser].answers).sort(
+    (a, b) => questions[b].timestamp - questions[a].timestamp
+  );
 
   const unansweredIDs = Object.keys(questions).filter((questionID) => {
     const filteredQuestion = answeredIDs.filter((answeredID) => {
@@ -62,7 +64,9 @@ const mapStateToProps = ({ users, questions, authedUser }, { tab }) => {
 
   return {
     questions,
-    unansweredIDs,
+    unansweredIDs: unansweredIDs.sort(
+      (a, b) => questions[b].timestamp - questions[a].timestamp
+    ),
     answeredIDs,
     authedUser,
     tab,
