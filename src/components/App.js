@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 import NavBar from "./NavBar";
+import Home from "./Home";
 import { handleInitialData } from "../actions/shared";
 
 function App(props) {
@@ -22,7 +23,7 @@ function App(props) {
         <div className="container">
           <NavBar />
           <Routes>
-            <Route exact path="/" element={<div>hola</div>} />
+            <Route exact path="/" element={<Home />} />
             <Route path="/questions/:question_id" element={<div></div>} />
             <Route path="/add" element={<div></div>} />
           </Routes>
