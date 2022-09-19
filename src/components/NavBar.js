@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const NavBar = () => {
   return (
@@ -8,11 +9,19 @@ const NavBar = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/new">New Tweet</Link>
+          <Link to="/leaderboard">Leaderboard</Link>
+        </li>
+        <li>
+          <Link to="/new">New</Link>
         </li>
       </ul>
     </nav>
   );
 };
 
-export default NavBar;
+const mapStateToProp = ({ users, authedUser }) => ({
+  users,
+  authedUser,
+});
+
+export default connect(mapStateToProp)(NavBar);
