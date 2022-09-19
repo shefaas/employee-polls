@@ -7,6 +7,8 @@ import NavBar from "./NavBar";
 import Home from "./Home";
 import { handleInitialData } from "../actions/shared";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function App(props) {
   useEffect(() => {
     props.dispatch(handleInitialData());
