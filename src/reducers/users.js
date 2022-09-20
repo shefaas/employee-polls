@@ -1,5 +1,4 @@
-import { GET_USERS } from "../actions/users";
-import { VOTE_ON_QUESTION } from "../actions/shared";
+import { GET_USERS, ADD_VOTE_TO_USER } from "../actions/users";
 import { UPDATE_USER_QUESTION } from "../actions/users";
 
 export default function users(state = {}, action) {
@@ -9,7 +8,7 @@ export default function users(state = {}, action) {
         ...state,
         ...action.users,
       };
-    case VOTE_ON_QUESTION:
+    case ADD_VOTE_TO_USER:
       const answer = action.voteData.answer;
       const qid = action.voteData.qid;
 

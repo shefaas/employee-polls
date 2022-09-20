@@ -1,4 +1,4 @@
-import { VOTE_ON_QUESTION } from "./shared";
+export const VOTE_ON_QUESTION = "VOTE_ON_QUESTION";
 
 export const GET_QUESTIONS = "GET_QUESTIONS";
 export const SAVE_QUESTION = "SAVE_QUESTION";
