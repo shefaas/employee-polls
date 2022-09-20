@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import { connect } from "react-redux";
 import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { setAuthedUser } from "../actions/authedUser";
 
-const NavBar = ({ users, authedUser }) => {
+const NavBar = ({ authedUser, dispatch }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(setAuthedUser(null));
+    navigate("/login");
+  };
   return (
     <Nav
       style={{
@@ -62,27 +70,10 @@ const NavBar = ({ users, authedUser }) => {
             New
           </Link>
         </li>
-        {/* <Nav.Item>
-          <Nav.Link href="/">Home</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="/leaderboard" href="/leaderboard">
-            Leaderboard
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="/add" href="/add">
-            New
-          </Nav.Link>
-        </Nav.Item> */}
       </div>
 
       <NavDropdown title={authedUser} id="basic-nav-dropdown" key="users">
-        {Object.keys(users).map((user, id) => (
-          <NavDropdown.Item key={id}>{user}</NavDropdown.Item>
-        ))}
-        <NavDropdown.Divider key="divider" />
-        <NavDropdown.Item href="#action/3.4" key="logout">
+        <NavDropdown.Item href="/login" key="logout" onClick={handleLogout}>
           Logout
         </NavDropdown.Item>
       </NavDropdown>

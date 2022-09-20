@@ -10,7 +10,7 @@ import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 export const VOTE_ON_QUESTION = "VOTE_ON_QUESTION";
 
-const AUTHED_USER_ID = "tylermcginnis";
+// const AUTHED_USER_ID = "tylermcginnis";
 
 export function handleInitialData() {
   return (dispatch) => {
@@ -19,7 +19,6 @@ export function handleInitialData() {
       .then(({ users, questions }) => {
         dispatch(getUsers(users));
         dispatch(getQuestions(questions));
-        dispatch(setAuthedUser(AUTHED_USER_ID));
         dispatch(hideLoading());
       })
       .catch((error) => {

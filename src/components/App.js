@@ -11,20 +11,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Question from "./Question";
 import Leaderboard from "./Leaderboard";
 import NewQuestion from "./NewQuestion";
+import Login from "./Login";
 
 function App(props) {
   useEffect(() => {
     props.dispatch(handleInitialData());
-    const { users, questions, authedUser } = props;
-    console.log({ users });
-    console.log({ questions });
-    console.log({ authedUser });
   }, []);
 
   return (
     <Fragment>
-      <LoadingBar />
-      {props.loading === true ? null : (
+      {!props.authedUser ? (
+        <Login />
+      ) : (
         <div>
           <NavBar />
           <Routes>
@@ -32,6 +30,7 @@ function App(props) {
             <Route path="/questions/*" element={<Question />} />
             <Route path="/leaderboard/" element={<Leaderboard />} />
             <Route path="/add" element={<NewQuestion />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       )}
