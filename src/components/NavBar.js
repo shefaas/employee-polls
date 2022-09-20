@@ -40,7 +40,9 @@ const NavBar = ({ users, authedUser }) => {
 
       <NavDropdown title={authedUser} id="basic-nav-dropdown">
         {Object.keys(users).map((user) => (
-          <NavDropdown.Item href="#action/3.1">{user}</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.1" key={user.id}>
+            {user}
+          </NavDropdown.Item>
         ))}
         <NavDropdown.Divider />
         <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>

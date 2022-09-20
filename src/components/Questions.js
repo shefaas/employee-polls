@@ -9,13 +9,14 @@ const Questions = (props) => {
     <div>
       <ul
         style={{
-          paddingTop: "10px",
+          margin: 0,
+          padding: 0,
+          paddingTop: "50px",
           listStyle: "none",
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          justifyContent: "flex-start",
-          alignContent: "stretch",
+          justifyContent: "center",
         }}
       >
         {unansweredIDs.map((id) => (
@@ -29,13 +30,14 @@ const Questions = (props) => {
     <div>
       <ul
         style={{
-          paddingTop: "10px",
+          margin: 0,
+          padding: 0,
+          paddingTop: "50px",
           listStyle: "none",
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          justifyContent: "flex-start",
-          alignContent: "stretch",
+          justifyContent: "center",
         }}
       >
         {answeredIDs.map((id) => (
