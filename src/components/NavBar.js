@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 import { connect } from "react-redux";
 import Nav from "react-bootstrap/Nav";
@@ -7,8 +6,6 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { setAuthedUser } from "../actions/authedUser";
 
 const NavBar = ({ authedUser, dispatch }) => {
-  const navigate = useNavigate();
-
   const handleLogout = () => {
     dispatch(setAuthedUser(null));
   };
@@ -74,11 +71,14 @@ const NavBar = ({ authedUser, dispatch }) => {
       <NavDropdown title={authedUser} id="basic-nav-dropdown" key="users">
         <Link
           to="/login"
-          style={{ textDecoration: "none", textAlign: "center" }}
+          style={{
+            textDecoration: "none",
+            textAlign: "center",
+            paddingLeft: "30px",
+          }}
+          onClick={handleLogout}
         >
-          <NavDropdown.Item key="logout" onClick={handleLogout}>
-            Logout
-          </NavDropdown.Item>
+          Logout
         </Link>
       </NavDropdown>
     </Nav>
