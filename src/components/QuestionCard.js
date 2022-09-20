@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { formatDate, formatQuestion } from "../utils/helper";
 
@@ -6,13 +7,9 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 const QuestionCard = (props) => {
-  // {props.questions[props.id].optionOne.text}
-
   const { questions, users, id } = props;
   const question = formatQuestion(questions[id], users[questions[id].author]);
-  console.log({ question });
-  console.log(questions[id].author);
-  console.log(`../../public/assets/${question.avatar}`);
+
   return (
     <div>
       <Card
@@ -24,7 +21,9 @@ const QuestionCard = (props) => {
         <Card.Body>
           <Card.Title>By {question.name}</Card.Title>
           <p>{formatDate(question.timestamp)}</p>
-          <Button variant="secondary">View</Button>
+          <Link to={`/questions/${question.id}`} state={{ id }}>
+            <Button variant="secondary">View</Button>
+          </Link>
         </Card.Body>
       </Card>
     </div>
