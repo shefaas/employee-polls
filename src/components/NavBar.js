@@ -29,7 +29,7 @@ const NavBar = ({ authedUser, dispatch }) => {
           flexDirection: "row",
           justifyContent: "flex-start",
           textDecoration: "none",
-          columnGap: "16px",
+          columnGap: "30px",
           paddingLeft: "5px",
           paddingTop: "5px",
         }}

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { Image, Button, Card } from "react-bootstrap";
 
@@ -23,15 +23,14 @@ const Question = (props) => {
     console.log({ user });
     if (user.length > 0) setQuestionAnswered(true);
     else setQuestionAnswered(false);
-  }, []);
+  }, [questionAnswered]);
 
-  const navigate = useNavigate();
   const question = formatQuestion(questions[id], users[questions[id].author]);
 
   const handleVote = (option) => {
     if (!questionAnswered) {
       dispatch(handleVoteOnQuestion(id, option));
-      navigate("/");
+      setQuestionAnswered(true);
     }
   };
 
@@ -51,8 +50,8 @@ const Question = (props) => {
     const optionOneVotes = calculateVotes("optionOne");
     const optionTwoVotes = calculateVotes("optionTwo");
     return option === "optionOne"
-      ? (optionOneVotes / (optionOneVotes + optionTwoVotes)) * 100
-      : (optionTwoVotes / (optionOneVotes + optionTwoVotes)) * 100;
+      ? ((optionOneVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(2)
+      : ((optionTwoVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(2);
   };
   return (
     <div
