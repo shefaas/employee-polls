@@ -51,7 +51,7 @@ const Leaderboard = ({ users }) => {
                   />
                   <div style={{ marginTop: "4px" }}>
                     <p style={{ fontSize: "14px", margin: 0 }}>{user.name}</p>
-                    <p style={{ fontSize: "12px" }}>{user.id}</p>
+                    <p style={{ fontSize: "12px" }}>@{user.id}</p>
                   </div>
                 </div>
               </td>

@@ -7,45 +7,79 @@ const Questions = (props) => {
 
   return tab === "unanswered" ? (
     <div>
-      <ul
-        style={{
-          margin: 0,
-          padding: 0,
-          paddingTop: "50px",
-          listStyle: "none",
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {unansweredIDs.map((id) => (
-          <li key={id} style={{ padding: "5px" }}>
-            <QuestionCard id={id} />
-          </li>
-        ))}
-      </ul>
+      {unansweredIDs && unansweredIDs.length > 0 ? (
+        <ul
+          style={{
+            margin: 0,
+            padding: 0,
+            paddingTop: "50px",
+            listStyle: "none",
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {unansweredIDs.map((id) => (
+            <li key={id} style={{ padding: "5px" }}>
+              <QuestionCard id={id} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            alignContent: "center",
+            width: "170vh",
+            height: "80vh",
+            color: "rgb(200, 200, 200)",
+          }}
+        >
+          No questions to show
+        </p>
+      )}
     </div>
   ) : (
     <div>
-      <ul
-        style={{
-          margin: 0,
-          padding: 0,
-          paddingTop: "50px",
-          listStyle: "none",
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {answeredIDs.map((id) => (
-          <li key={id} style={{ padding: "5px" }}>
-            <QuestionCard id={id} />
-          </li>
-        ))}
-      </ul>
+      {answeredIDs && answeredIDs.length > 0 ? (
+        <ul
+          style={{
+            margin: 0,
+            padding: 0,
+            paddingTop: "50px",
+            listStyle: "none",
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {answeredIDs.map((id) => (
+            <li key={id} style={{ padding: "5px" }}>
+              <QuestionCard id={id} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            alignContent: "center",
+            width: "170vh",
+            height: "80vh",
+            color: "rgb(200, 200, 200)",
+          }}
+        >
+          No questions to show
+        </p>
+      )}
     </div>
   );
 };
