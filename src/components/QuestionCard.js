@@ -14,13 +14,18 @@ const QuestionCard = (props) => {
     <div>
       <Card
         style={{
-          width: "14rem",
+          width: "12rem",
         }}
       >
         <Card.Img variant="top" src={question.avatar} />
         <Card.Body>
-          <Card.Title>By {question.name}</Card.Title>
-          <p>{formatDate(question.timestamp)}</p>
+          <h6>
+            {`By `}
+            {<span style={{ fontStyle: "italic" }}>{question.name}</span>}
+          </h6>
+          <p style={{ fontColor: "gray", fontSize: "10px" }}>
+            {formatDate(question.timestamp)}
+          </p>
           <Link to={`/questions/${question.id}`} state={{ id }}>
             <Button variant="secondary">View</Button>
           </Link>
