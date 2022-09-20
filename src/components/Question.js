@@ -50,8 +50,8 @@ const Question = (props) => {
     const optionOneVotes = calculateVotes("optionOne");
     const optionTwoVotes = calculateVotes("optionTwo");
     return option === "optionOne"
-      ? ((optionOneVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(2)
-      : ((optionTwoVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(2);
+      ? ((optionOneVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(0)
+      : ((optionTwoVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(0);
   };
   return (
     <div
