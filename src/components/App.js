@@ -12,6 +12,7 @@ import Question from "./Question";
 import Leaderboard from "./Leaderboard";
 import NewQuestion from "./NewQuestion";
 import Login from "./Login";
+import NotFound404 from "./NotFound404";
 
 function App(props) {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App(props) {
             <Route path="/leaderboard/" element={<Leaderboard />} />
             <Route path="/add" element={<NewQuestion />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/404" element={<NotFound404 />} />
           </Routes>
         </div>
       )}

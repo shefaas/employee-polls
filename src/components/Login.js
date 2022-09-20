@@ -1,9 +1,5 @@
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { Image } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import { setAuthedUser } from "../actions/authedUser";
@@ -12,9 +8,10 @@ const Login = ({ users, dispatch }) => {
   const navigate = useNavigate();
 
   const handleSetAuthedUser = (event) => {
-    console.log(event.target.text.substring(1));
     dispatch(setAuthedUser(event.target.text.substring(1)));
-    navigate("/");
+    const currentURL = window.location.href;
+    if (currentURL.includes("/questions/")) navigate("/404");
+    else navigate("/");
   };
   return (
     <div
