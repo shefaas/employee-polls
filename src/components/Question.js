@@ -27,11 +27,19 @@ const Question = (props) => {
 
   const navigate = useNavigate();
   const question = formatQuestion(questions[id], users[questions[id].author]);
-
+  //   console.log({ questionAnswered });
   const handleVote = (option) => {
     if (!questionAnswered) {
       dispatch(handleVoteOnQuestion(id, option));
       navigate("/");
+    }
+  };
+
+  const answer = () => {
+    console.log({ questionAnswered });
+    if (questionAnswered) {
+      console.log(users[authedUser].answers[id]);
+      return users[authedUser].answers[id];
     }
   };
 
@@ -45,7 +53,7 @@ const Question = (props) => {
       }}
     >
       <h3>
-        Question By{" "}
+        {`Question By `}
         {<span style={{ fontStyle: "italic" }}>{question.name}</span>}
       </h3>
       <p>{formatDate(question.timestamp)}</p>
@@ -80,18 +88,30 @@ const Question = (props) => {
               <Card.Header>Option 1</Card.Header>
               <Card.Body>
                 <Card.Title>{question.optionOne.text}</Card.Title>
-                <Button variant="secondary" disabled>
-                  Vote
-                </Button>
+                {answer() === "optionOne" ? (
+                  <Button variant="success" disabled>
+                    VOTED
+                  </Button>
+                ) : (
+                  <Button variant="secondary" disabled>
+                    Vote
+                  </Button>
+                )}
               </Card.Body>
             </Card>
             <Card className="text-center">
               <Card.Header>Option 2</Card.Header>
               <Card.Body>
                 <Card.Title>{question.optionTwo.text}</Card.Title>
-                <Button variant="secondary" disabled>
-                  Vote
-                </Button>
+                {answer() === "optionTwo" ? (
+                  <Button variant="success" disabled>
+                    VOTED
+                  </Button>
+                ) : (
+                  <Button variant="secondary" disabled>
+                    Vote
+                  </Button>
+                )}
               </Card.Body>
             </Card>
           </div>
@@ -112,7 +132,7 @@ const Question = (props) => {
               <Card.Body>
                 <Card.Title>{question.optionOne.text}</Card.Title>
                 <Button
-                  variant="secondary"
+                  variant="outline-primary"
                   onClick={() => handleVote("optionOne")}
                 >
                   Vote
@@ -124,7 +144,7 @@ const Question = (props) => {
               <Card.Body>
                 <Card.Title>{question.optionTwo.text}</Card.Title>
                 <Button
-                  variant="secondary"
+                  variant="outline-primary"
                   onClick={() => handleVote("optionTwo")}
                 >
                   Vote
