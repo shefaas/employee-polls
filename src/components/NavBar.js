@@ -14,23 +14,53 @@ const NavBar = ({ users, authedUser }) => {
         margin: "20px",
         marginBottom: "50px",
       }}
-      activeKey="/home"
     >
       <div
         style={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "flex-start",
+          textDecoration: "none",
+          columnGap: "16px",
+          paddingLeft: "5px",
+          paddingTop: "5px",
         }}
       >
-        <li>
-          <Link to="/">Home</Link>
+        <li key="home">
+          <Link
+            key="home"
+            to="/"
+            style={{
+              textDecoration: "none",
+              fontColor: "blue",
+            }}
+          >
+            Home
+          </Link>
         </li>
-        <li>
-          <Link to="/leaderboard">Leaderboard</Link>
+        <li key="leaderboard">
+          <Link
+            key="leaderboard"
+            to="/leaderboard"
+            style={{
+              textDecoration: "none",
+              fontColor: "blue",
+            }}
+          >
+            Leaderboard
+          </Link>
         </li>
-        <li>
-          <Link to="/add">New</Link>
+        <li key="add">
+          <Link
+            key="add"
+            to="/add"
+            style={{
+              textDecoration: "none",
+              fontColor: "blue",
+            }}
+          >
+            New
+          </Link>
         </li>
         {/* <Nav.Item>
           <Nav.Link href="/">Home</Nav.Link>
@@ -47,14 +77,14 @@ const NavBar = ({ users, authedUser }) => {
         </Nav.Item> */}
       </div>
 
-      <NavDropdown title={authedUser} id="basic-nav-dropdown">
-        {Object.keys(users).map((user) => (
-          <NavDropdown.Item href="#action/3.1" key={user.id}>
-            {user}
-          </NavDropdown.Item>
+      <NavDropdown title={authedUser} id="basic-nav-dropdown" key="users">
+        {Object.keys(users).map((user, id) => (
+          <NavDropdown.Item key={id}>{user}</NavDropdown.Item>
         ))}
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
+        <NavDropdown.Divider key="divider" />
+        <NavDropdown.Item href="#action/3.4" key="logout">
+          Logout
+        </NavDropdown.Item>
       </NavDropdown>
     </Nav>
   );
