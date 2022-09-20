@@ -40,10 +40,7 @@ function App(props) {
   );
 }
 
-const mapStateToProps = ({ users, questions, authedUser }) => ({
-  users,
-  questions,
+const mapStateToProps = ({ authedUser }) => ({
   authedUser,
-  loading: authedUser === null,
 });
 export default connect(mapStateToProps)(App);

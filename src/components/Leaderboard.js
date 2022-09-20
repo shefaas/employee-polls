@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 import Table from "react-bootstrap/Table";
 import { Image } from "react-bootstrap";
 
-const Leaderboard = ({ users, authedUser }) => {
-  console.log(users[authedUser].answers);
-
+const Leaderboard = ({ users }) => {
   const sortedUsers = Object.values(users).sort((userA, userB) => {
-    console.log({ userA, userB });
     return (
       Object.keys(userA.answers).length +
       userB.questions.length -
@@ -15,7 +12,6 @@ const Leaderboard = ({ users, authedUser }) => {
     );
   });
 
-  console.log({ sortedUsers });
   return (
     <div style={{ margin: "50px" }}>
       <Table bordered hover>
@@ -69,17 +65,8 @@ const Leaderboard = ({ users, authedUser }) => {
   );
 };
 
-const mapStateToProps = ({ users, questions, authedUser }) => ({
+const mapStateToProps = ({ users }) => ({
   users,
-  //   sortedUsers: Object.keys(users).sort(
-  //     (a, b) =>
-  //       Object.keys(users[b].answers).length +
-  //       Object.keys(users[b].questions).length -
-  //       (Object.keys(users[a].answers).length +
-  //         Object.keys(users[a].questions).length)
-  //   ),
-  questions,
-  authedUser,
 });
 
 export default connect(mapStateToProps)(Leaderboard);

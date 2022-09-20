@@ -9,9 +9,10 @@ import { useState, useEffect } from "react";
 
 const Question = (props) => {
   const { questions, users, authedUser, dispatch } = props;
+
   const location = useLocation();
   const { id } = location.state;
-  console.log({ id });
+
   const [questionAnswered, setQuestionAnswered] = useState(true);
 
   useEffect(() => {
@@ -20,7 +21,6 @@ const Question = (props) => {
     );
     const user = allUsersVoted.filter((id) => id === authedUser);
 
-    console.log({ user });
     if (user.length > 0) setQuestionAnswered(true);
     else setQuestionAnswered(false);
   }, [questionAnswered]);
@@ -35,9 +35,7 @@ const Question = (props) => {
   };
 
   const answer = () => {
-    console.log({ questionAnswered });
     if (questionAnswered) {
-      console.log(users[authedUser].answers[id]);
       return users[authedUser].answers[id];
     }
   };

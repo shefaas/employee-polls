@@ -35,11 +35,10 @@ const QuestionCard = (props) => {
   );
 };
 
-const mapStateToProps = ({ questions, users, authedUser }, { id }) => {
+const mapStateToProps = ({ questions, users }, { id }) => {
   return {
     questions,
     users,
-    authedUser,
     id,
   };
 };

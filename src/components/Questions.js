@@ -3,10 +3,8 @@ import { connect } from "react-redux";
 import QuestionCard from "./QuestionCard";
 
 const Questions = (props) => {
-  const { questions, unansweredIDs, answeredIDs, authedUser, tab, dispatch } =
-    props;
+  const { unansweredIDs, answeredIDs, tab } = props;
 
-  console.log({ questions });
   return tab === "unanswered" ? (
     <div>
       <ul
@@ -67,12 +65,10 @@ const mapStateToProps = ({ users, questions, authedUser }, { tab }) => {
   });
 
   return {
-    questions,
     unansweredIDs: unansweredIDs.sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp
     ),
     answeredIDs,
-    authedUser,
     tab,
   };
 };

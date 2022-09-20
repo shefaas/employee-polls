@@ -6,11 +6,11 @@ import LoadingBar from "react-redux-loading-bar";
 
 import Questions from "./Questions";
 
-const Home = (props) => {
+const Home = ({ loading }) => {
   return (
     <div>
       <LoadingBar />
-      {props.loading === true ? null : (
+      {loading === true ? null : (
         <div>
           <Tabs
             defaultActiveKey="unanswered"
@@ -31,10 +31,7 @@ const Home = (props) => {
   );
 };
 
-const mapStateToProps = ({ users, questions, authedUser }) => ({
-  users,
-  questions,
-  authedUser,
+const mapStateToProps = ({ authedUser }) => ({
   loading: authedUser === null,
 });
 

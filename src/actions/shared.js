@@ -31,7 +31,6 @@ export function handleVoteOnQuestion(qid, answer) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
 
-    console.log({ authedUser });
     dispatch(showLoading());
     dispatch(voteOnQuestion({ authedUser, qid, answer }));
     dispatch(voteOnQuestionForUser({ authedUser, qid, answer }));
