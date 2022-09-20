@@ -27,7 +27,7 @@ const Question = (props) => {
 
   const navigate = useNavigate();
   const question = formatQuestion(questions[id], users[questions[id].author]);
-  //   console.log({ questionAnswered });
+
   const handleVote = (option) => {
     if (!questionAnswered) {
       dispatch(handleVoteOnQuestion(id, option));
@@ -43,6 +43,17 @@ const Question = (props) => {
     }
   };
 
+  const calculateVotes = (option) => {
+    return questions[id][option].votes.length;
+  };
+
+  const calculatePercentage = (option) => {
+    const optionOneVotes = calculateVotes("optionOne");
+    const optionTwoVotes = calculateVotes("optionTwo");
+    return option === "optionOne"
+      ? (optionOneVotes / (optionOneVotes + optionTwoVotes)) * 100
+      : (optionTwoVotes / (optionOneVotes + optionTwoVotes)) * 100;
+  };
   return (
     <div
       style={{
@@ -88,6 +99,12 @@ const Question = (props) => {
               <Card.Header>Option 1</Card.Header>
               <Card.Body>
                 <Card.Title>{question.optionOne.text}</Card.Title>
+                <Card.Text>
+                  {`${calculateVotes("optionOne")} (${calculatePercentage(
+                    "optionOne"
+                  )}%) `}
+                  people voted on this
+                </Card.Text>
                 {answer() === "optionOne" ? (
                   <Button variant="success" disabled>
                     VOTED
@@ -103,6 +120,12 @@ const Question = (props) => {
               <Card.Header>Option 2</Card.Header>
               <Card.Body>
                 <Card.Title>{question.optionTwo.text}</Card.Title>
+                <Card.Text>
+                  {`${calculateVotes("optionTwo")} (${calculatePercentage(
+                    "optionTwo"
+                  )}%) `}
+                  people voted on this
+                </Card.Text>
                 {answer() === "optionTwo" ? (
                   <Button variant="success" disabled>
                     VOTED
