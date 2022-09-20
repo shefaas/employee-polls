@@ -11,7 +11,6 @@ const NavBar = ({ authedUser, dispatch }) => {
 
   const handleLogout = () => {
     dispatch(setAuthedUser(null));
-    navigate("/login");
   };
   return (
     <Nav
@@ -73,9 +72,14 @@ const NavBar = ({ authedUser, dispatch }) => {
       </div>
 
       <NavDropdown title={authedUser} id="basic-nav-dropdown" key="users">
-        <NavDropdown.Item href="/login" key="logout" onClick={handleLogout}>
-          Logout
-        </NavDropdown.Item>
+        <Link
+          to="/login"
+          style={{ textDecoration: "none", textAlign: "center" }}
+        >
+          <NavDropdown.Item key="logout" onClick={handleLogout}>
+            Logout
+          </NavDropdown.Item>
+        </Link>
       </NavDropdown>
     </Nav>
   );
