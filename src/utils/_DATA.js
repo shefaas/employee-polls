@@ -164,6 +164,7 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
 }
 
 export function _saveQuestion(question) {
+  console.log({ question });
   return new Promise((resolve, reject) => {
     if (
       !question.optionOneText ||

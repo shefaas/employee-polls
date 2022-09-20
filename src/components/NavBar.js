@@ -23,7 +23,16 @@ const NavBar = ({ users, authedUser }) => {
           justifyContent: "flex-start",
         }}
       >
-        <Nav.Item>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/leaderboard">Leaderboard</Link>
+        </li>
+        <li>
+          <Link to="/add">New</Link>
+        </li>
+        {/* <Nav.Item>
           <Nav.Link href="/">Home</Nav.Link>
         </Nav.Item>
         <Nav.Item>
@@ -32,10 +41,10 @@ const NavBar = ({ users, authedUser }) => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="/new" href="/new">
+          <Nav.Link eventKey="/add" href="/add">
             New
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
       </div>
 
       <NavDropdown title={authedUser} id="basic-nav-dropdown">

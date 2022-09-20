@@ -6,14 +6,16 @@ import { Image } from "react-bootstrap";
 const Leaderboard = ({ users, authedUser }) => {
   console.log(users[authedUser].answers);
 
-  const sortedUsers = Object.keys(users).sort(
-    (a, b) =>
-      Object.keys(users[b].answers).length +
-      Object.keys(users[b].questions).length -
-      (Object.keys(users[a].answers).length +
-        Object.keys(users[a].questions).length)
-  );
+  const sortedUsers = Object.values(users).sort((userA, userB) => {
+    console.log({ userA, userB });
+    return (
+      Object.keys(userA.answers).length +
+      userB.questions.length -
+      (Object.keys(userA.answers).length + userB.questions.length)
+    );
+  });
 
+  console.log({ sortedUsers });
   return (
     <div style={{ margin: "50px" }}>
       <Table bordered hover>
@@ -26,7 +28,7 @@ const Leaderboard = ({ users, authedUser }) => {
         </thead>
         <tbody>
           {sortedUsers.map((user) => (
-            <tr>
+            <tr key={user.id}>
               <td>
                 <div
                   style={{
@@ -40,7 +42,7 @@ const Leaderboard = ({ users, authedUser }) => {
                   }}
                 >
                   <Image
-                    src={users[user].avatarURL}
+                    src={user.avatarURL}
                     roundedCircle
                     style={{
                       width: "8vh",
@@ -52,15 +54,13 @@ const Leaderboard = ({ users, authedUser }) => {
                     }}
                   />
                   <div style={{ marginTop: "4px" }}>
-                    <p style={{ fontSize: "14px", margin: 0 }}>
-                      {users[user].name}
-                    </p>
-                    <p style={{ fontSize: "12px" }}>{user}</p>
+                    <p style={{ fontSize: "14px", margin: 0 }}>{user.name}</p>
+                    <p style={{ fontSize: "12px" }}>{user.id}</p>
                   </div>
                 </div>
               </td>
-              <td>{Object.keys(users[user].answers).length}</td>
-              <td>{Object.keys(users[user].questions).length}</td>
+              <td>{Object.keys(user.answers).length}</td>
+              <td>{user.questions.length}</td>
             </tr>
           ))}
         </tbody>
@@ -71,6 +71,13 @@ const Leaderboard = ({ users, authedUser }) => {
 
 const mapStateToProps = ({ users, questions, authedUser }) => ({
   users,
+  //   sortedUsers: Object.keys(users).sort(
+  //     (a, b) =>
+  //       Object.keys(users[b].answers).length +
+  //       Object.keys(users[b].questions).length -
+  //       (Object.keys(users[a].answers).length +
+  //         Object.keys(users[a].questions).length)
+  //   ),
   questions,
   authedUser,
 });

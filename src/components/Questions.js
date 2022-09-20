@@ -5,6 +5,8 @@ import QuestionCard from "./QuestionCard";
 const Questions = (props) => {
   const { questions, unansweredIDs, answeredIDs, authedUser, tab, dispatch } =
     props;
+
+  console.log({ questions });
   return tab === "unanswered" ? (
     <div>
       <ul

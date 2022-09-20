@@ -1,8 +1,7 @@
-import { showLoading, hideLoading } from "react-redux-loading-bar";
-import { saveQuestionAnswer } from "../utils/api";
+import { VOTE_ON_QUESTION } from "./shared";
 
 export const GET_QUESTIONS = "GET_QUESTIONS";
-export const VOTE_ON_QUESTION = "VOTE_ON_QUESTION";
+export const SAVE_QUESTION = "SAVE_QUESTION";
 
 export function getQuestions(questions) {
   return {
@@ -19,5 +18,12 @@ export function voteOnQuestion({ authedUser, qid, answer }) {
       qid,
       answer,
     },
+  };
+}
+
+export function saveQuestion(question) {
+  return {
+    type: SAVE_QUESTION,
+    question,
   };
 }

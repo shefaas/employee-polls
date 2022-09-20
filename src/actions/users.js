@@ -1,5 +1,7 @@
+import { VOTE_ON_QUESTION } from "./shared";
+
 export const GET_USERS = "GET_USERS";
-export const VOTE_ON_QUESTION = "VOTE_ON_QUESTION";
+export const UPDATE_USER_QUESTION = "UPDATE_USER_QUESTION";
 
 export function getUsers(users) {
   return {
@@ -16,5 +18,12 @@ export function voteOnQuestionForUser({ authedUser, qid, answer }) {
       qid,
       answer,
     },
+  };
+}
+
+export function saveQuestionForUser(question) {
+  return {
+    type: UPDATE_USER_QUESTION,
+    question,
   };
 }

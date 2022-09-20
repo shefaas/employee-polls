@@ -1,4 +1,5 @@
-import { GET_QUESTIONS, VOTE_ON_QUESTION } from "../actions/questions";
+import { GET_QUESTIONS, SAVE_QUESTION } from "../actions/questions";
+import { VOTE_ON_QUESTION } from "../actions/shared";
 
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -20,6 +21,13 @@ export default function questions(state = {}, action) {
             votes: [...state[id][answer].votes, action.voteData.authedUser],
           },
         },
+      };
+    case SAVE_QUESTION:
+      const question = action.question;
+      const qID = question.id;
+      return {
+        ...state,
+        [qID]: question,
       };
     default:
       return state;

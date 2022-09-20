@@ -10,6 +10,7 @@ import { handleInitialData } from "../actions/shared";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Question from "./Question";
 import Leaderboard from "./Leaderboard";
+import NewQuestion from "./NewQuestion";
 
 function App(props) {
   useEffect(() => {
@@ -30,7 +31,7 @@ function App(props) {
             <Route exact path="/" element={<Home />} />
             <Route path="/questions/*" element={<Question />} />
             <Route path="/leaderboard/" element={<Leaderboard />} />
-            <Route path="/add" element={<div></div>} />
+            <Route path="/add" element={<NewQuestion />} />
           </Routes>
         </div>
       )}
