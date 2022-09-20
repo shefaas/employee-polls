@@ -23,7 +23,7 @@ function App(props) {
     <Fragment>
       <LoadingBar />
       {props.loading === true ? null : (
-        <div className="container">
+        <div>
           <NavBar />
           <Routes>
             <Route exact path="/" element={<Home />} />

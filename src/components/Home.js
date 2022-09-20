@@ -7,7 +7,11 @@ import Questions from "./Questions";
 
 const Home = (props) => {
   return (
-    <div>
+    <div
+      style={{
+        margin: "30px",
+      }}
+    >
       <Tabs defaultActiveKey="unanswered" className="mb-3" fill>
         <Tab eventKey="unanswered" title="Unanswered">
           <Questions tab="unanswered" />
