@@ -8,6 +8,7 @@ import Home from "./Home";
 import { handleInitialData } from "../actions/shared";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import Question from "./Question";
 
 function App(props) {
   useEffect(() => {
@@ -26,7 +27,7 @@ function App(props) {
           <NavBar />
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/questions/:question_id" element={<div></div>} />
+            <Route path="/questions/*" element={<Question />} />
             <Route path="/add" element={<div></div>} />
           </Routes>
         </div>
