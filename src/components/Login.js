@@ -29,7 +29,7 @@ const Login = ({ users, dispatch }) => {
       <div>
         <h2>Employee Polls App 👋</h2>
       </div>
-      <Dropdown>
+      <Dropdown data-testid="login-dropdown">
         <Dropdown.Toggle variant="primary" id="dropdown-basic">
           Select Login User
         </Dropdown.Toggle>
@@ -37,6 +37,7 @@ const Login = ({ users, dispatch }) => {
         <Dropdown.Menu
           key="users"
           style={{ padding: "10px", borderStyle: "solid", borderWidth: "1px" }}
+          data-testid="login-menu"
         >
           {Object.values(users).map((user, id) => (
             <Dropdown.Item
@@ -45,6 +46,7 @@ const Login = ({ users, dispatch }) => {
                 padding: "10px",
               }}
               onClick={handleSetAuthedUser}
+              data-testid={id}
             >
               <Image
                 src={user.avatarURL}

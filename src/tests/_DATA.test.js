@@ -1,4 +1,4 @@
-import { _saveQuestion, _saveQuestionAnswer } from "./_DATA";
+import { _saveQuestion, _saveQuestionAnswer } from "../utils/_DATA";
 
 describe("_saveQuestion()", () => {
   it("Test that _saveQuestion() will return question object with correct data", async () => {
@@ -38,6 +38,17 @@ describe("_saveQuestion()", () => {
     const question = {
       author: "someUsername",
       optionOneText: "1",
+    };
+    await expect(_saveQuestion(question)).rejects.toEqual(
+      "Please provide optionOneText, optionTwoText, and author"
+    );
+  });
+
+  it("Test that _saveQuestion() will throw an error if a parameter name is wrong", async () => {
+    const question = {
+      author: "someUsername",
+      option1Text: "1",
+      optionTwoText: "1",
     };
     await expect(_saveQuestion(question)).rejects.toEqual(
       "Please provide optionOneText, optionTwoText, and author"

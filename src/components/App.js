@@ -22,7 +22,10 @@ function App(props) {
   return (
     <Fragment>
       {!props.authedUser ? (
-        <Login />
+        <div>
+          <p>{props.testingValue}</p>
+          <Login />
+        </div>
       ) : (
         <div>
           <NavBar />
@@ -40,7 +43,8 @@ function App(props) {
   );
 }
 
-const mapStateToProps = ({ authedUser }) => ({
+const mapStateToProps = ({ authedUser }, { testingValue }) => ({
   authedUser,
+  testingValue,
 });
 export default connect(mapStateToProps)(App);
