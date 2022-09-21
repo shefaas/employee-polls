@@ -67,6 +67,10 @@ const Question = (props) => {
   const calculatePercentage = (option) => {
     const optionOneVotes = calculateVotes("optionOne");
     const optionTwoVotes = calculateVotes("optionTwo");
+
+    if (optionOneVotes === 0 || optionTwoVotes === 0) {
+      return 0;
+    }
     return option === "optionOne"
       ? ((optionOneVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(0)
       : ((optionTwoVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(0);
