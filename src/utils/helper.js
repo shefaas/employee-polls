@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export function formatDate(timestamp) {
   const d = new Date(timestamp);
   const time = d.toLocaleTimeString("en-US");
@@ -17,3 +19,11 @@ export function formatQuestion(question, author) {
     avatar: avatarURL,
   };
 }
+
+export const useRequireAuth = (authedUser, route, navigate) => {
+  useEffect(() => {
+    if (!authedUser) {
+      navigate("/login", { state: route });
+    }
+  }, []);
+};

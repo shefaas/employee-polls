@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { handleSaveQuestion } from "../actions/shared";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useRequireAuth } from "../utils/helper";
 
 const NewQuestion = ({ authedUser, dispatch }) => {
   const [optionOne, setOptionOne] = useState("");
@@ -11,11 +12,8 @@ const NewQuestion = ({ authedUser, dispatch }) => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!authedUser) {
-      navigate("/login", { state: "/home" });
-    }
-  }, []);
+  useRequireAuth(authedUser, "/add", navigate);
+
   const handleInput = (event, option) => {
     const value = event.target.value;
     if (option === "optionOne") setOptionOne(value);

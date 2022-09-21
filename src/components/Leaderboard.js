@@ -4,15 +4,11 @@ import Table from "react-bootstrap/Table";
 import { Image } from "react-bootstrap";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRequireAuth } from "../utils/helper";
 
 const Leaderboard = ({ authedUser, users }) => {
   const navigate = useNavigate();
-  useEffect(() => {
-    console.log({ authedUser });
-    if (!authedUser) {
-      navigate("/login", { state: "/leaderboard" });
-    }
-  }, []);
+  useRequireAuth(authedUser, "/leaderboard", navigate);
 
   const sortedUsers = Object.values(users).sort((userA, userB) => {
     return (

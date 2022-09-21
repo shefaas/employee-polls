@@ -5,6 +5,7 @@ import { Image, Button, Card } from "react-bootstrap";
 import { formatDate, formatQuestion } from "../utils/helper";
 import { handleVoteOnQuestion } from "../actions/shared";
 import { useState, useEffect } from "react";
+import { useRequireAuth } from "../utils/helper";
 
 const Question = (props) => {
   const [question, setQuestion] = useState(undefined);
@@ -18,6 +19,8 @@ const Question = (props) => {
   console.log(id);
 
   const navigate = useNavigate();
+
+  useRequireAuth(authedUser, "/questions/id", navigate);
 
   useEffect(() => {
     const questionFound = Object.keys(questions).filter((q) => q === id);

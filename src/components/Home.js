@@ -5,16 +5,12 @@ import Tabs from "react-bootstrap/Tabs";
 import LoadingBar from "react-redux-loading-bar";
 
 import Questions from "./Questions";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRequireAuth } from "../utils/helper";
 
 const Home = ({ authedUser, loading }) => {
   const navigate = useNavigate();
-  useEffect(() => {
-    if (!authedUser) {
-      navigate("/login", { state: "/home" });
-    }
-  }, []);
+  useRequireAuth(authedUser, "/", navigate);
 
   return (
     <div>
