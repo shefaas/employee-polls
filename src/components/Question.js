@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
-import { useLocation } from "react-router-dom";
-
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { Image, Button, Card } from "react-bootstrap";
 
 import { formatDate, formatQuestion } from "../utils/helper";
@@ -8,24 +7,40 @@ import { handleVoteOnQuestion } from "../actions/shared";
 import { useState, useEffect } from "react";
 
 const Question = (props) => {
+  const [question, setQuestion] = useState(undefined);
+
   const { questions, users, authedUser, dispatch } = props;
 
-  const location = useLocation();
-  const { id } = location.state;
+  const param = useParams();
+  const id = param.id;
+
+  console.log({ param });
+  console.log(id);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const questionFound = Object.keys(questions).filter((q) => q === id);
+    if (questionFound.length > 0) {
+      setQuestion(formatQuestion(questions[id], users[questions[id].author]));
+    } else {
+      navigate("/404");
+    }
+  }, []);
 
   const [questionAnswered, setQuestionAnswered] = useState(true);
 
   useEffect(() => {
-    const allUsersVoted = questions[id].optionOne.votes.concat(
-      questions[id].optionTwo.votes
-    );
-    const user = allUsersVoted.filter((id) => id === authedUser);
+    if (question) {
+      const allUsersVoted = questions[id].optionOne.votes.concat(
+        questions[id].optionTwo.votes
+      );
+      const user = allUsersVoted.filter((id) => id === authedUser);
 
-    if (user.length > 0) setQuestionAnswered(true);
-    else setQuestionAnswered(false);
+      if (user.length > 0) setQuestionAnswered(true);
+      else setQuestionAnswered(false);
+    }
   }, [questionAnswered]);
-
-  const question = formatQuestion(questions[id], users[questions[id].author]);
 
   const handleVote = (option) => {
     if (!questionAnswered) {
@@ -53,6 +68,9 @@ const Question = (props) => {
       ? ((optionOneVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(0)
       : ((optionTwoVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(0);
   };
+
+  if (question === undefined) return <div></div>;
+
   return (
     <div
       style={{

@@ -5,8 +5,17 @@ import Tabs from "react-bootstrap/Tabs";
 import LoadingBar from "react-redux-loading-bar";
 
 import Questions from "./Questions";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Home = ({ loading }) => {
+const Home = ({ authedUser, loading }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!authedUser) {
+      navigate("/login", { state: "/home" });
+    }
+  }, []);
+
   return (
     <div>
       <LoadingBar />
@@ -32,6 +41,7 @@ const Home = ({ loading }) => {
 };
 
 const mapStateToProps = ({ authedUser }) => ({
+  authedUser,
   loading: authedUser === null,
 });
 

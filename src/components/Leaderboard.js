@@ -2,8 +2,18 @@ import { connect } from "react-redux";
 
 import Table from "react-bootstrap/Table";
 import { Image } from "react-bootstrap";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Leaderboard = ({ users }) => {
+const Leaderboard = ({ authedUser, users }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    console.log({ authedUser });
+    if (!authedUser) {
+      navigate("/login", { state: "/leaderboard" });
+    }
+  }, []);
+
   const sortedUsers = Object.values(users).sort((userA, userB) => {
     return (
       Object.keys(userB.answers).length +
@@ -65,7 +75,8 @@ const Leaderboard = ({ users }) => {
   );
 };
 
-const mapStateToProps = ({ users }) => ({
+const mapStateToProps = ({ authedUser, users }) => ({
+  authedUser,
   users,
 });
 

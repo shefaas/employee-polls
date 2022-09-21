@@ -1,16 +1,21 @@
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { handleSaveQuestion } from "../actions/shared";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const NewQuestion = (props) => {
+const NewQuestion = ({ authedUser, dispatch }) => {
   const [optionOne, setOptionOne] = useState("");
   const [optionTwo, setOptionTwo] = useState("");
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!authedUser) {
+      navigate("/login", { state: "/home" });
+    }
+  }, []);
   const handleInput = (event, option) => {
     const value = event.target.value;
     if (option === "optionOne") setOptionOne(value);
@@ -23,7 +28,7 @@ const NewQuestion = (props) => {
     const option1 = event.target[0].value;
     const option2 = event.target[1].value;
 
-    props.dispatch(handleSaveQuestion(option1, option2));
+    dispatch(handleSaveQuestion(option1, option2));
     navigate("/");
   };
 

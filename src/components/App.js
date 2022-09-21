@@ -31,7 +31,7 @@ function App(props) {
           <NavBar />
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/questions/*" element={<Question />} />
+            <Route path="/questions/:id" element={<Question />} />
             <Route path="/leaderboard/" element={<Leaderboard />} />
             <Route path="/add" element={<NewQuestion />} />
             <Route path="/login" element={<Login />} />

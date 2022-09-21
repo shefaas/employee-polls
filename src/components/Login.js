@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import { Image } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -6,13 +6,19 @@ import { setAuthedUser } from "../actions/authedUser";
 
 const Login = ({ users, dispatch }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSetAuthedUser = (event) => {
     dispatch(setAuthedUser(event.target.text.substring(1)));
-    const currentURL = window.location.href;
-    if (currentURL.includes("/questions/")) navigate("/404");
-    else navigate("/");
+
+    const state = location.state;
+    if (state) {
+      navigate(state);
+    } else if (window.location.href.includes("/login")) {
+      navigate("/");
+    }
   };
+
   return (
     <div
       style={{
@@ -69,7 +75,8 @@ const Login = ({ users, dispatch }) => {
   );
 };
 
-const mapStateToProp = ({ users, authedUser }) => ({
+const mapStateToProp = ({ questions, users, authedUser }) => ({
+  questions,
   users,
   authedUser,
 });
