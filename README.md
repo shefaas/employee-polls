@@ -29,11 +29,11 @@ The project is built mainly to get hands-on experience with React/Redux. It can 
 - [Freepik](freepik.com)
 # API
 Initial data and APIs are create by Udacity team. Details about APIs are in `/src/utils/README.md`.
-# Available Scripts
+# Getting Started
 
-In the project directory, you can run:
+To install required packages, in the project directory, you can run:
 
-### `npm start`
+### `npm install` then `npm start`
 
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
