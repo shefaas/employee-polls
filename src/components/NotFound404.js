@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { Button, Image } from "react-bootstrap";
-import Dropdown from "react-bootstrap/Dropdown";
-import { setAuthedUser } from "../actions/authedUser";
+import { Button } from "react-bootstrap";
 
 const NotFound404 = ({ authedUser }) => {
   const navigate = useNavigate();

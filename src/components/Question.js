@@ -29,6 +29,7 @@ const Question = (props) => {
 
   const handleVote = (option) => {
     if (!questionAnswered) {
+      console.log({ question });
       dispatch(handleVoteOnQuestion(id, option));
       setQuestionAnswered(true);
     }
@@ -41,6 +42,7 @@ const Question = (props) => {
   };
 
   const calculateVotes = (option) => {
+    console.log({ question });
     return questions[id][option].votes.length;
   };
 

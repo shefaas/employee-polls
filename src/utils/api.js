@@ -19,8 +19,6 @@ export function saveQuestionAnswer({ authedUser, qid, answer }) {
 }
 
 export function createQuestion({ author, optionOneText, optionTwoText }) {
-  console.log({ optionOneText });
-
   const question = { author, optionOneText, optionTwoText };
   return _saveQuestion(question);
 }
