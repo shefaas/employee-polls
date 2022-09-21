@@ -19,13 +19,13 @@ The project is built mainly to get hands-on experience with React/Redux. It can 
 
 # Built With
 
-- React 18
-- Redux
-- React Redux
-- React Bootstrap
-- React Loading Bar
-- Jest
-- React Testing Library
+- [React 18](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [React Redux](https://react-redux.js.org/)
+- [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction)
+- [React Redux Loading Bar](https://www.npmjs.com/package/react-redux-loading-bar)
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 # API
 Initial data and APIs are create by Udacity team. Details about APIs are in `/src/utils/README.md`.
