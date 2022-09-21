@@ -26,7 +26,7 @@ The project is built mainly to get hands-on experience with React/Redux. It can 
 - [React Redux Loading Bar](https://www.npmjs.com/package/react-redux-loading-bar)
 - [Jest](https://jestjs.io/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-
+- [Freepik](freepik.com)
 # API
 Initial data and APIs are create by Udacity team. Details about APIs are in `/src/utils/README.md`.
 # Available Scripts
