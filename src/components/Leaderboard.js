@@ -6,9 +6,9 @@ import { Image } from "react-bootstrap";
 const Leaderboard = ({ users }) => {
   const sortedUsers = Object.values(users).sort((userA, userB) => {
     return (
-      Object.keys(userA.answers).length +
+      Object.keys(userB.answers).length +
       userB.questions.length -
-      (Object.keys(userA.answers).length + userB.questions.length)
+      (Object.keys(userA.answers).length + userA.questions.length)
     );
   });
 
