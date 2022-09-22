@@ -13,8 +13,7 @@ const NotFound404 = ({ authedUser }) => {
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
-        width: "170vh",
-        height: "80vh",
+        height: "70vh",
         rowGap: "50px",
       }}
     >
