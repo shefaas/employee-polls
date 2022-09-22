@@ -34,8 +34,7 @@ const Questions = (props) => {
             justifyContent: "center",
             alignItems: "center",
             alignContent: "center",
-            width: "170vh",
-            height: "80vh",
+            height: "70vh",
             color: "rgb(200, 200, 200)",
           }}
         >
@@ -72,8 +71,7 @@ const Questions = (props) => {
             justifyContent: "center",
             alignItems: "center",
             alignContent: "center",
-            width: "170vh",
-            height: "80vh",
+            height: "70vh",
             color: "rgb(200, 200, 200)",
           }}
         >
