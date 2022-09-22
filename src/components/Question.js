@@ -15,9 +15,6 @@ const Question = (props) => {
   const param = useParams();
   const id = param.id;
 
-  console.log({ param });
-  console.log(id);
-
   const navigate = useNavigate();
 
   useRequireAuth(authedUser, "/questions/id", navigate);
@@ -31,7 +28,7 @@ const Question = (props) => {
     }
   }, []);
 
-  const [questionAnswered, setQuestionAnswered] = useState(true);
+  const [questionAnswered, setQuestionAnswered] = useState(false);
 
   useEffect(() => {
     if (question) {
@@ -43,7 +40,7 @@ const Question = (props) => {
       if (user.length > 0) setQuestionAnswered(true);
       else setQuestionAnswered(false);
     }
-  }, [questionAnswered]);
+  }, [question, questionAnswered]);
 
   const handleVote = (option) => {
     if (!questionAnswered) {

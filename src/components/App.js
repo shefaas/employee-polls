@@ -36,6 +36,7 @@ function App(props) {
             <Route path="/add" element={<NewQuestion />} />
             <Route path="/login" element={<Login />} />
             <Route path="/404" element={<NotFound404 />} />
+            <Route path="/*" element={<NotFound404 />} />
           </Routes>
         </div>
       )}
