@@ -24,6 +24,7 @@ function App(props) {
       {!props.authedUser ? (
         <div>
           <p>{props.testingValue}</p>
+          <NavBar />
           <Login />
         </div>
       ) : (
@@ -35,7 +36,6 @@ function App(props) {
             <Route path="/leaderboard/" element={<Leaderboard />} />
             <Route path="/add" element={<NewQuestion />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/404" element={<NotFound404 />} />
             <Route path="/*" element={<NotFound404 />} />
           </Routes>
         </div>

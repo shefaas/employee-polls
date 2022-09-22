@@ -68,19 +68,21 @@ const NavBar = ({ authedUser, dispatch }) => {
         </li>
       </div>
 
-      <NavDropdown title={authedUser} id="basic-nav-dropdown" key="users">
-        <Link
-          to="/login"
-          style={{
-            textDecoration: "none",
-            textAlign: "center",
-            paddingLeft: "30px",
-          }}
-          onClick={handleLogout}
-        >
-          Logout
-        </Link>
-      </NavDropdown>
+      {authedUser && (
+        <NavDropdown title={authedUser} id="basic-nav-dropdown" key="users">
+          <Link
+            to="/login"
+            style={{
+              textDecoration: "none",
+              textAlign: "center",
+              paddingLeft: "30px",
+            }}
+            onClick={handleLogout}
+          >
+            Logout
+          </Link>
+        </NavDropdown>
+      )}
     </Nav>
   );
 };

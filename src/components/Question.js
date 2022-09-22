@@ -6,6 +6,7 @@ import { formatDate, formatQuestion } from "../utils/helper";
 import { handleVoteOnQuestion } from "../actions/shared";
 import { useState, useEffect } from "react";
 import { useRequireAuth } from "../utils/helper";
+import NotFound404 from "./NotFound404";
 
 const Question = (props) => {
   const [question, setQuestion] = useState(undefined);
@@ -23,8 +24,6 @@ const Question = (props) => {
     const questionFound = Object.keys(questions).filter((q) => q === id);
     if (questionFound.length > 0) {
       setQuestion(formatQuestion(questions[id], users[questions[id].author]));
-    } else {
-      navigate("/404");
     }
   }, []);
 
@@ -73,7 +72,12 @@ const Question = (props) => {
       : ((optionTwoVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(0);
   };
 
-  if (question === undefined) return <div></div>;
+  if (question === undefined)
+    return (
+      <div>
+        <NotFound404 />
+      </div>
+    );
 
   return (
     <div
