@@ -1,10 +1,13 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Image } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import { setAuthedUser } from "../actions/authedUser";
 
-const Login = ({ users, dispatch }) => {
+const Login = () => {
+  const users = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -74,10 +77,4 @@ const Login = ({ users, dispatch }) => {
   );
 };
 
-const mapStateToProp = ({ questions, users, authedUser }) => ({
-  questions,
-  users,
-  authedUser,
-});
-
-export default connect(mapStateToProp)(Login);
+export default Login;

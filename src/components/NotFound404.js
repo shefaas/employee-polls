@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 
-const NotFound404 = ({ authedUser }) => {
+const NotFound404 = () => {
+  const authedUser = useSelector((state) => state.authedUser);
+
   const navigate = useNavigate();
 
   return (
@@ -30,8 +32,4 @@ const NotFound404 = ({ authedUser }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser }) => ({
-  authedUser,
-});
-
-export default connect(mapStateToProps)(NotFound404);
+export default NotFound404;

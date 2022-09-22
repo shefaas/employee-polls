@@ -1,12 +1,15 @@
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { handleSaveQuestion } from "../actions/shared";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useRequireAuth } from "../utils/helper";
 
-const NewQuestion = ({ authedUser, dispatch }) => {
+const NewQuestion = () => {
+  const authedUser = useSelector((state) => state.authedUser);
+  const dispatch = useDispatch();
+
   const [optionOne, setOptionOne] = useState("");
   const [optionTwo, setOptionTwo] = useState("");
 
@@ -82,8 +85,4 @@ const NewQuestion = ({ authedUser, dispatch }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser }) => ({
-  authedUser,
-});
-
-export default connect(mapStateToProps)(NewQuestion);
+export default NewQuestion;

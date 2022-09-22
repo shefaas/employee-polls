@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { setAuthedUser } from "../actions/authedUser";
 
-const NavBar = ({ authedUser, dispatch }) => {
+const NavBar = () => {
+  const authedUser = useSelector((state) => state.authedUser);
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
     dispatch(setAuthedUser(null));
   };
@@ -87,9 +90,4 @@ const NavBar = ({ authedUser, dispatch }) => {
   );
 };
 
-const mapStateToProp = ({ users, authedUser }) => ({
-  users,
-  authedUser,
-});
-
-export default connect(mapStateToProp)(NavBar);
+export default NavBar;

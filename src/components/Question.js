@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Image, Button, Card } from "react-bootstrap";
 
 import { formatDate, formatQuestion } from "../utils/helper";

@@ -1,12 +1,13 @@
-import { connect } from "react-redux";
-
+import { useSelector } from "react-redux";
 import Table from "react-bootstrap/Table";
 import { Image } from "react-bootstrap";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRequireAuth } from "../utils/helper";
 
-const Leaderboard = ({ authedUser, users }) => {
+const Leaderboard = () => {
+  const users = useSelector((state) => state.users);
+  const authedUser = useSelector((state) => state.authedUser);
+
   const navigate = useNavigate();
   useRequireAuth(authedUser, "/leaderboard", navigate);
 
@@ -71,9 +72,4 @@ const Leaderboard = ({ authedUser, users }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, users }) => ({
-  authedUser,
-  users,
-});
-
-export default connect(mapStateToProps)(Leaderboard);
+export default Leaderboard;
