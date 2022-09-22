@@ -66,11 +66,11 @@ let questions = {
     author: "mtsamis",
     timestamp: 1468479767190,
     optionOne: {
-      votes: [],
+      votes: ["sarahedo"],
       text: "hire more frontend developers",
     },
     optionTwo: {
-      votes: ["mtsamis", "sarahedo"],
+      votes: ["mtsamis"],
       text: "hire more backend developers",
     },
   },
