@@ -51,6 +51,7 @@ const Question = (props) => {
 
   const answer = () => {
     if (questionAnswered) {
+      console.log(users[authedUser]);
       return users[authedUser].answers[id];
     }
   };
@@ -64,12 +65,13 @@ const Question = (props) => {
     const optionOneVotes = calculateVotes("optionOne");
     const optionTwoVotes = calculateVotes("optionTwo");
 
-    if (optionOneVotes === 0 || optionTwoVotes === 0) {
+    const votesSum = optionOneVotes + optionTwoVotes;
+    if (votesSum === 0) {
       return 0;
     }
     return option === "optionOne"
-      ? ((optionOneVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(0)
-      : ((optionTwoVotes / (optionOneVotes + optionTwoVotes)) * 100).toFixed(0);
+      ? ((optionOneVotes / votesSum) * 100).toFixed(0)
+      : ((optionTwoVotes / votesSum) * 100).toFixed(0);
   };
 
   if (question === undefined)
